@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
 import dto.User;
@@ -24,7 +25,7 @@ public class LoginUser extends HttpServlet
 		
 		User user=userdao.find(UserId);
 		
-		if(userdao==null)
+		if(user==null)
 		{
 			res.getWriter().print("<h1>Invalid ID</h1>");
 		}
@@ -32,6 +33,9 @@ public class LoginUser extends HttpServlet
 		{
 			if(user.getCreate_Password().equals(Password))
 			{
+				HttpSession session=req.getSession();
+				session.setAttribute("user", user);
+				
 				res.getWriter().print("<h1>Login successfully</h1>");	
 				req.getRequestDispatcher("UserHome.html").include(req, res);
 			}
