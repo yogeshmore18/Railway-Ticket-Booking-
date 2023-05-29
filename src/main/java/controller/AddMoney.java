@@ -24,7 +24,6 @@ public class AddMoney extends HttpServlet
 		}
 		else{
 		user.setWallet(user.getWallet()+Double.parseDouble(req.getParameter("amount")));
-		
 		UserDao dao=new UserDao();
 		dao.update(user);
 		

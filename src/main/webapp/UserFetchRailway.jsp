@@ -34,19 +34,16 @@
 <%for(Train train:list)
 {%>
 
-
 <tr>
 <td><%=train.getNumber() %></td>
 <td><%=train.getName()%></td>
 <td><%=train.getSeat()%></td>
 <td><%=train.getStations()[0]%></td>
 <td><%=train.getStations()[train.getStations().length-1]%></td>
-
 <td><%=train.getTime()[0]%></td>
 <td><%=train.getTime()[train.getTime().length-1]%></td>
 <td><%=Arrays.toString(train.getDays())%></td>
-<td><a <%-- href="EditTrainInfo.jsp?number=<%=train.getNumber()%>" --%>><button>Book</button></a></td>
-
+<td><a href="BookTicket.jsp?train_number=<%=train.getNumber()%>"><button>Book</button></a></td>
 </tr>
 
 	
@@ -54,9 +51,5 @@
 
 </table>
 <a href="UserHome.html">Back</a>
-
-
-
-
 </body>
 </html>
